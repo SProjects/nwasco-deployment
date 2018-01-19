@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
        nwasco.vm.hostname = "nwasco"
        nwasco.vm.network "private_network", ip: "192.168.33.20"
        nwasco.vm.network "forwarded_port", guest: 80, host: 8080
-       nwasco.vm.synced_folder ".", "/home/vagrant"
+       nwasco.vm.synced_folder ".", "/home/vagrant/nwasco"
        nwasco.vm.provision "shell", path: "setup.sh"
        nwasco.vm.provision "ansible" do |ansible|
           ansible.playbook = "nwasco.yml"
