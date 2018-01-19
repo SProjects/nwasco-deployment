@@ -1,0 +1,22 @@
+---
+- hosts: nwasco
+  become: yes
+  user: root
+
+  tasks:
+  - name: Create nwasco folder
+    file:
+      path: nwasco/
+      state: directory
+      mode: 0755
+      owner: vagrant
+      group: vagrant
+  
+  - name: Clone NWASCO code from Github
+    git:
+      repo: https//github.com/SProjects/v2-nwasco.git
+      dest: nwasco/
+      force: yes
+    become: yes
+    become_user: vagrant
+  
